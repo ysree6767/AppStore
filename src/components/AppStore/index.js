@@ -3,6 +3,9 @@ import TabItem from '../TabItem'
 import AppItem from '../AppItem'
 import './index.css'
 
+const SEARCH_ICON_URL =
+  'https://assets.ccbp.in/frontend/react-js/app-store/app-store-search-img.png'
+
 const tabsList = [
   {tabId: 'SOCIAL', displayText: 'Social'},
   {tabId: 'GAMES', displayText: 'Games'},
@@ -312,8 +315,19 @@ class AppStore extends Component {
     return filteredApps
   }
 
+  getSearchResults = () => {
+    const {searchInput} = this.state
+    const searchResults = appsList.filter(eachApp =>
+      eachApp.appName.toLowerCase().includes(searchInput.toLowerCase()),
+    )
+    return searchResults
+  }
+
   render() {
     const {searchInput, activeTabId} = this.state
+
+    const searchResults = this.getSearchResults()
+    const filteredApps = this.getActiveTabApps(searchResults)
 
     return (
       <div className="app-container">
