@@ -3,7 +3,7 @@ import TabItem from '../TabItem'
 import AppItem from '../AppItem'
 import './index.css'
 
-const SEARCH_ICON_URL =
+const searchIcon =
   'https://assets.ccbp.in/frontend/react-js/app-store/app-store-search-img.png'
 
 const tabsList = [
@@ -341,11 +341,7 @@ class AppStore extends Component {
               value={searchInput}
               onChange={this.onChangeSearchInput}
             />
-            <img
-              src="https://assets.ccbp.in/frontend/react-js/app-store/app-store-search-img.png"
-              alt="search-icon"
-              className="search-icon"
-            />
+            <img src={searchIcon} alt="search icon" className="search-icon" />
           </div>
           <ul className="tabs-list">
             {tabsList.map(eachTab => (
